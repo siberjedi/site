@@ -426,7 +426,31 @@
     letter-spacing: 2px;
     color: var(--muted);
     text-transform: uppercase;
+    display: block;
+    margin-bottom: 1.2rem;
   }
+  .game-btn {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid var(--cyan);
+    color: var(--cyan); text-decoration: none;
+    cursor: none; position: relative; overflow: hidden;
+    transition: color 0.3s;
+  }
+  .game-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--cyan);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s; z-index: -1;
+  }
+  .game-btn:hover::before { transform: scaleX(1); }
+  .game-btn:hover { color: var(--bg); }
+  .game-card:nth-child(2) .game-btn { border-color: var(--pink); color: var(--pink); }
+  .game-card:nth-child(2) .game-btn::before { background: var(--pink); }
+  .game-card:nth-child(2) .game-btn:hover { color: var(--bg); }
 
   .game-icon {
     font-size: 3rem;
@@ -644,6 +668,7 @@
       <h3 class="game-title">Soul of Hero</h3>
       <p class="game-desc">Karanlık bir dünyada kahramanını yönet. Aksiyon dolu savaşlar, karmaşık düşman AI ve derin bir lore seni bekliyor. SiberJedi'nin ilk büyük projesi.</p>
       <span class="game-platform">🎮 Google Play · Android</span>
+      <a href="https://play.google.com/store/apps/details?id=com.AlpiGames.SoulOfHero" target="_blank" class="game-btn">Play Store'da Gör →</a>
     </div>
     <div class="game-card">
       <span class="game-icon">🚀</span>
@@ -651,6 +676,7 @@
       <h3 class="game-title">Daki In Space</h3>
       <p class="game-desc">Uzayın derinliklerinde bir macera. Daki ile galaksileri gezip hayatta kalmaya çalış. Hypercasual mekaniği ile maksimum eğlence.</p>
       <span class="game-platform">🎮 Google Play · Android</span>
+      <a href="https://play.google.com/store/apps/details?id=com.AlpiGames.DakiUzayda" target="_blank" class="game-btn">Play Store'da Gör →</a>
     </div>
     <div class="game-card">
       <span class="game-icon">👑</span>
