@@ -383,6 +383,8 @@
     overflow: hidden;
     transition: background 0.3s;
     cursor: none;
+    display: flex;
+    flex-direction: column;
   }
   .game-card::before {
     content: '';
@@ -420,7 +422,7 @@
     color: #fff;
     margin-bottom: 0.8rem;
   }
-  .game-desc { color: var(--muted); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .game-desc { color: var(--muted); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.5rem; flex: 1; }
 
   .game-platform {
     font-family: 'Share Tech Mono', monospace;
@@ -636,7 +638,7 @@
     </div>
     <div class="about-stats reveal">
       <div class="stat">
-        <span class="stat-num">2</span>
+        <span class="stat-num">3</span>
         <span class="stat-label">Yayınlanan Oyun</span>
       </div>
       <div class="stat">
@@ -681,11 +683,12 @@
       <a href="https://play.google.com/store/apps/details?id=com.AlpiGames.DakiUzayda" target="_blank" class="game-btn">Play Store'da Gör →</a>
     </div>
     <div class="game-card">
-      <span class="game-icon">👑</span>
-      <div class="game-tag">NFT · Sohverse</div>
-      <h3 class="game-title">Sohverse Kings</h3>
-      <p class="game-desc">Soul of Hero evreninden ilham alan özel NFT koleksiyonu. Sohverse Kings, SiberJedi'nin dijital dünyaya attığı ilk büyük adım.</p>
-      <span class="game-platform">🔗 NFT Collection</span>
+      <span class="game-icon">⌨️</span>
+      <div class="game-tag">Android · SiberJedi</div>
+      <h3 class="game-title">Keycap Kingdom</h3>
+      <p class="game-desc">Keycap Kingdom, her dokunuşun para kazandırdığı ve her paketin yeni tuş kapakları açtığı, klavye temalı bir boş zaman tıklama ve koleksiyon oyunudur.</p>
+      <span class="game-platform">🎮 Google Play · Android</span>
+      <a href="https://play.google.com/store/apps/details?id=com.SiberJedi.KeycapKingdom" target="_blank" class="game-btn">Play Store'da Gör →</a>
     </div>
   </div>
 </section>
