@@ -171,7 +171,40 @@
     </div>
   </div>
   <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.4rem">
-    <span class="pill">ders programı hazırlama</span><span class="pill">ücretsiz ders programı</span><span class="pill">okul ders programı</span><span class="pill">ders dağıtım programı</span><span class="pill">otomatik ders programı</span><span class="pill">ders programı yapma</span>
+    <span class="pill">ders programı hazırlama</span><span class="pill">ücretsiz ders programı</span><span class="pill">okul ders programı</span><span class="pill">ders dağıtım programı</span><span class="pill">otomatik ders programı</span>    <span class="pill">ders programı yapma</span>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- FEEDBACK / MESSAGE BOARD -->
+<section id="pano">
+  <p class="section-label">// geri_bildirim</p>
+  <h2 class="section-title">Mesaj Panosu — Geri Bildirim</h2>
+  <p style="color:var(--muted);line-height:1.8;max-width:700px;margin:-2rem 0 2rem">Planla! kullananlar mesaj bırakabilir — beğendiklerimi burada yayınlıyorum.</p>
+  <div class="feedback-grid">
+    <form id="feedback-form" class="feedback-form" action="https://formsubmit.co/siberjedi@gmail.com" method="POST">
+      <h3>Mesaj Bırak</h3>
+      <input type="hidden" name="_subject" value="Yeni pano mesajı — planla.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <div>
+        <label for="fb-name">İsim</label>
+        <input id="fb-name" class="feedback-input" type="text" name="name" placeholder="Adınız" required maxlength="40">
+      </div>
+      <div>
+        <label for="fb-msg">Mesaj</label>
+        <textarea id="fb-msg" class="feedback-textarea" name="message" placeholder="Öneriniz, teşekkür veya geri bildiriminiz..." required maxlength="500"></textarea>
+      </div>
+      <button class="feedback-btn" type="submit">Gönder →</button>
+      <p id="fb-status" class="feedback-hint" style="display:none"></p>
+      <p class="feedback-hint">Gönderilenler önce bana email olarak düşer. Onayladıklarım burada yayınlanır.</p>
+    </form>
+    <div>
+      <h3 style="font-family:'Orbitron',monospace;color:#fff;font-size:1rem;margin-bottom:1rem">Yayınlanan Mesajlar</h3>
+      <div id="feedback-list" class="feedback-list"><div class="feedback-empty">Yükleniyor...</div></div>
+    </div>
   </div>
 </section>
 
@@ -241,39 +274,6 @@
   <details><summary>Ücretli programlardaki gibi çakışma kontrolü var mı?</summary><p>Evet. Sınıf, öğretmen, derslik ve çapraz okul çakışmaları, kapalı saatler, teneffüs ve öğle arası kuralları otomatik denetlenir. Çizelgeyi Doğrula ile hepsini listeleyebilirsiniz.</p></details>
   <details><summary>PDF ve Excel olarak çıktı alabilir miyim?</summary><p>Evet. Yazdır/PDF ve Excel butonları ile tek çizelge, tüm sınıflar, tüm öğretmenler veya tüm okullar için çıktı alabilirsiniz.</p></details>
   <details><summary>Verilerim güvende mi?</summary><p>Verileriniz sadece tarayıcınızın hafızasında saklanır, hiçbir sunucuya gönderilmez. Kaydet ile JSON yedeği alıp başka bilgisayara taşıyabilirsiniz.</p></details>
-</section>
-
-<div class="glow-sep"></div>
-
-<!-- FEEDBACK / MESSAGE BOARD -->
-<section id="pano">
-  <p class="section-label">// geri_bildirim</p>
-  <h2 class="section-title">Mesaj Panosu — Geri Bildirim</h2>
-  <p style="color:var(--muted);line-height:1.8;max-width:700px;margin:-2rem 0 2rem">Planla! kullananlar mesaj bırakabilir — beğendiklerimi burada yayınlıyorum.</p>
-  <div class="feedback-grid">
-    <form id="feedback-form" class="feedback-form" action="https://formsubmit.co/siberjedi@gmail.com" method="POST">
-      <h3>Mesaj Bırak</h3>
-      <input type="hidden" name="_subject" value="Yeni pano mesajı — planla.html">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="text" name="_honey" style="display:none">
-      <div>
-        <label for="fb-name">İsim</label>
-        <input id="fb-name" class="feedback-input" type="text" name="name" placeholder="Adınız" required maxlength="40">
-      </div>
-      <div>
-        <label for="fb-msg">Mesaj</label>
-        <textarea id="fb-msg" class="feedback-textarea" name="message" placeholder="Öneriniz, teşekkür veya geri bildiriminiz..." required maxlength="500"></textarea>
-      </div>
-      <button class="feedback-btn" type="submit">Gönder →</button>
-      <p id="fb-status" class="feedback-hint" style="display:none"></p>
-      <p class="feedback-hint">Gönderilenler önce bana email olarak düşer. Onayladıklarım burada yayınlanır.</p>
-    </form>
-    <div>
-      <h3 style="font-family:'Orbitron',monospace;color:#fff;font-size:1rem;margin-bottom:1rem">Yayınlanan Mesajlar</h3>
-      <div id="feedback-list" class="feedback-list"><div class="feedback-empty">Yükleniyor...</div></div>
-    </div>
-  </div>
 </section>
 
 <div class="glow-sep"></div>
