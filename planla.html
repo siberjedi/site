@@ -70,11 +70,21 @@
   .section-label{font-family:'Share Tech Mono',monospace;font-size:.75rem;letter-spacing:6px;color:var(--pink);text-transform:uppercase;margin-bottom:.5rem}
   .section-title{font-family:'Orbitron',monospace;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:700;color:var(--cyan);text-shadow:0 0 20px rgba(0,245,255,.3);margin-bottom:2.5rem}
   .section-title::after{content:'';display:block;width:80px;height:2px;background:linear-gradient(90deg,var(--pink),transparent);margin-top:.8rem}
-  .hero{padding:9rem 3rem 4rem;text-align:center;position:relative;z-index:1;max-width:900px;margin:0 auto}
-  .hero h1{font-family:'Orbitron',monospace;font-size:clamp(2rem,6vw,3.5rem);font-weight:900;color:var(--cyan);text-shadow:0 0 40px var(--cyan);line-height:1.1}
+  .hero{padding:9rem 3rem 4rem;position:relative;z-index:1;max-width:1200px;margin:0 auto;display:flex;gap:2rem;align-items:center;justify-content:center}
+  .hero-main{flex:1;max-width:700px;text-align:center}
+  .hero h1{font-family:'Orbitron',monospace;font-size:clamp(2rem,6vw,3.2rem);font-weight:900;color:var(--cyan);text-shadow:0 0 40px var(--cyan);line-height:1.1}
   .hero h1 span{color:var(--green)} .hero-sub{font-family:'Share Tech Mono',monospace;color:var(--green);letter-spacing:4px;margin-top:1rem;text-transform:uppercase;font-size:.9rem}
   .hero-desc{max-width:700px;margin:1.5rem auto 0;color:var(--muted);line-height:1.8;font-size:1.05rem}
   .hero-desc strong{color:var(--text)} .cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+  /* HERO TICKER - vertical infinite */
+  .hero-ticker-wrap{width:340px;flex-shrink:0;height:380px;overflow:hidden;position:relative;border:1px solid var(--border);background:rgba(5,13,21,0.6);backdrop-filter:blur(4px);mask-image:linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);-webkit-mask-image:linear-gradient(to bottom, transparent, black 12%, black 88%, transparent)}
+  .hero-ticker{display:flex;flex-direction:column;gap:.8rem;will-change:transform;animation: tickerScroll linear infinite}
+  .hero-ticker-item{background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--green);padding:1rem 1.1rem;flex-shrink:0}
+  .hero-ticker-name{font-family:'Orbitron',monospace;font-size:.75rem;color:var(--cyan);letter-spacing:1px}
+  .hero-ticker-msg{font-size:.85rem;color:var(--text);line-height:1.6;margin-top:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .hero-ticker-date{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:.4rem;letter-spacing:1px}
+  .hero-ticker-empty{font-family:'Share Tech Mono',monospace;font-size:.75rem;color:var(--muted);text-align:center;padding:2rem}
+  @keyframes tickerScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
   .btn{font-family:'Share Tech Mono',monospace;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:.9rem 2.2rem;border:1px solid var(--green);color:var(--green);background:transparent;text-decoration:none;cursor:none;position:relative;overflow:hidden;transition:color .3s;z-index:0}
   .btn::before{content:'';position:absolute;inset:0;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:-1}
   .btn:hover::before{transform:scaleX(1)} .btn:hover{color:var(--bg)}
@@ -109,6 +119,7 @@
   .feedback-date{font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
   .feedback-msg{color:var(--text);line-height:1.7;margin-top:.8rem;font-size:.95rem}
   .feedback-empty{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:var(--muted);text-align:center;padding:2rem;border:1px dashed var(--border)}
+  @media(max-width:900px){.hero{flex-direction:column;max-width:900px;text-align:center}.hero-ticker-wrap{width:100%;max-width:420px;height:280px}}
   @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}section{padding:3.5rem 1.5rem}.hero{padding:7rem 1.5rem 3rem}.grid2,.grid3,.feedback-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -125,18 +136,23 @@
 </nav>
 
 <div class="hero">
-  <p class="section-label" style="text-align:center">// ders_programı</p>
-  <h1>Planla! <span>— Ücretsiz Ders Programı</span> Hazırlama Programı</h1>
-  <p class="hero-sub">Kurulum yok · Offline · Tamamen ücretsiz</p>
-  <p class="hero-desc">
-    Okul ders programı hazırlama artık saatler sürmesin. <strong>Planla!</strong> ile öğretmen, sınıf ve derslik çakışmalarını otomatik çözen, <strong>ders dağıtımını dakikalar içinde</strong> yapan ücretsiz bir <strong>ders programı yapma programı</strong>.
-    Ücretli alternatiflere göre daha hızlı, daha kolay ve internet gerektirmez — <strong>baslat.html</strong>'e çift tıklayın, tarayıcınızda açılır.
-  </p>
-  <div class="cta">
-    <a href="downloads/Planla.zip" download class="btn">Hemen İndir — Ücretsiz ↓</a>
+  <div class="hero-main">
+    <p class="section-label" style="text-align:center">// ders_programı</p>
+    <h1>Planla! <span>— Ücretsiz Ders Programı</span> Hazırlama Programı</h1>
+    <p class="hero-sub">Kurulum yok · Offline · Tamamen ücretsiz</p>
+    <p class="hero-desc">
+      Okul ders programı hazırlama artık saatler sürmesin. <strong>Planla!</strong> ile öğretmen, sınıf ve derslik çakışmalarını otomatik çözen, <strong>ders dağıtımını dakikalar içinde</strong> yapan ücretsiz bir <strong>ders programı yapma programı</strong>.
+      Ücretli alternatiflere göre daha hızlı, daha kolay ve internet gerektirmez — <strong>baslat.html</strong>'e çift tıklayın, tarayıcınızda açılır.
+    </p>
+    <div class="cta">
+      <a href="downloads/Planla.zip" download class="btn">Hemen İndir — Ücretsiz ↓</a>
     <a href="#nasil" class="btn cyan">Nasıl Çalışır?</a>
   </div>
-  <p style="margin-top:1rem;font-family:'Share Tech Mono',monospace;font-size:.7rem;letter-spacing:2px;color:var(--muted)">PLANLA.ZIP · ~600 KB · WINDOWS / MAC / LINUX</p>
+    <p style="margin-top:1rem;font-family:'Share Tech Mono',monospace;font-size:.7rem;letter-spacing:2px;color:var(--muted)">PLANLA.ZIP · ~600 KB · WINDOWS / MAC / LINUX</p>
+  </div>
+  <div class="hero-ticker-wrap" id="hero-ticker-wrap" aria-hidden="true">
+    <div class="hero-ticker" id="hero-ticker"><div class="hero-ticker-empty">Mesajlar yükleniyor...</div></div>
+  </div>
 </div>
 
 <div class="glow-sep"></div>
@@ -277,18 +293,33 @@
   const cursor=document.getElementById('cursor'),trail=document.getElementById('cursor-trail');
   document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';setTimeout(()=>{trail.style.left=e.clientX+'px';trail.style.top=e.clientY+'px'},80)});
   document.querySelectorAll('a,button,.card,.feedback-card,.feedback-btn').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2)';cursor.style.borderColor='var(--pink)'});el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';cursor.style.borderColor='var(--cyan)'})});
-  // feedback board
+  // feedback board + hero ticker
   (async()=>{
     const list=document.getElementById('feedback-list');
+    const ticker=document.getElementById('hero-ticker');
+    const safe=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     try{
       const res=await fetch('feedback.json',{cache:'no-store'});
       const data=await res.json();
-      if(!Array.isArray(data)||data.length===0){list.innerHTML='<div class="feedback-empty">Henüz yayınlanan mesaj yok — ilk sen bırak!</div>';return;}
-      list.innerHTML=data.slice().reverse().map(m=>{
-        const safe=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-        return `<div class="feedback-card"><div class="feedback-name">${safe(m.name)}</div><div class="feedback-date">${safe(m.date)}</div><div class="feedback-msg">${safe(m.message)}</div></div>`;
-      }).join('');
-    }catch(e){list.innerHTML='<div class="feedback-empty">Mesajlar yüklenemedi.</div>';}
+      if(!Array.isArray(data)||data.length===0){
+        list.innerHTML='<div class="feedback-empty">Henüz yayınlanan mesaj yok — ilk sen bırak!</div>';
+        ticker.innerHTML='<div class="hero-ticker-empty">Henüz yorum yok — ilk geri bildirimi sen bırak!</div>';
+        ticker.style.animation='none';
+        return;
+      }
+      list.innerHTML=data.slice().reverse().map(m=>`<div class="feedback-card"><div class="feedback-name">${safe(m.name)}</div><div class="feedback-date">${safe(m.date)}</div><div class="feedback-msg">${safe(m.message)}</div></div>`).join('');
+      // hero ticker: duplicate for seamless loop, bottom->top
+      let items=data.slice().reverse();
+      // ensure enough items for smooth scroll
+      while(items.length<4) items=items.concat(data.slice().reverse());
+      const doubled=[...items,...items];
+      ticker.innerHTML=doubled.map(m=>`<div class="hero-ticker-item"><div class="hero-ticker-name">${safe(m.name)}</div><div class="hero-ticker-msg">${safe(m.message)}</div><div class="hero-ticker-date">${safe(m.date)}</div></div>`).join('');
+      ticker.style.animationDuration=(doubled.length*2.2)+'s';
+    }catch(e){
+      list.innerHTML='<div class="feedback-empty">Mesajlar yüklenemedi.</div>';
+      ticker.innerHTML='<div class="hero-ticker-empty">Mesajlar yüklenemedi.</div>';
+      ticker.style.animation='none';
+    }
   })();
   (()=>{
     const form=document.getElementById('feedback-form'),status=document.getElementById('fb-status'),btn=form.querySelector('button[type="submit"]');
