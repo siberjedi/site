@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "name": "Murat K.",
+    "message": "24 şubeli ortaokul, her yıl 2-3 gün uğraşırdık. Bu sene 1 saatte bitti. Teneffüs ve öğle arası ayarı çok iyi.",
+    "date": "2026-08-12"
+  },
+  {
+    "name": "Elif Yılmaz",
+    "message": "Ücretli program 2500 TL istedi. Planla ile aynı işi ücretsiz yaptım. PDF çıktısı tertemiz.",
+    "date": "2026-08-14"
+  },
+  {
+    "name": "Hakan Öğretmen",
+    "message": "İlk başta blok olayını karıştırdım ama kılavuzdaki örnekle çözdüm. Dağıtım gayet dengeli oldu.",
+    "date": "2026-08-15"
+  },
+  {
+    "name": "Selin D.",
+    "message": "Bizde ortaokul + lise aynı binada. Çoklu okul desteği hayat kurtardı, hiç çakışma olmadı.",
+    "date": "2026-08-16"
+  },
+  {
+    "name": "Ahmet Ç.",
+    "message": "Kurulum yok diye şüpheliydim ama baslat.html'e tıklayınca direkt açıldı. Offline olması büyük artı.",
+    "date": "2026-08-17"
+  },
+  {
+    "name": "Gülşah A.",
+    "message": "Excel çıktısını idareye verdim, çok beğendiler. Keşke daha önce keşfetseydim.",
+    "date": "2026-08-18"
+  },
+  {
+    "name": "Emre H.",
+    "message": "Geri bildirim bırakayım dedim, gerçekten işe yarıyor. Emeğinize sağlık.",
+    "date": "2026-08-19"
+  }
+]
