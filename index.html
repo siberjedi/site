@@ -733,6 +733,28 @@
   }
   .download-btn:hover::before { transform: scaleX(1); }
   .download-btn:hover { color: var(--bg); }
+
+  /* FEEDBACK / MESSAGE BOARD */
+  .feedback-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+  .feedback-form{background:var(--bg2);border:1px solid var(--border);padding:2rem;display:flex;flex-direction:column;gap:1rem}
+  .feedback-form h3{font-family:'Orbitron',monospace;color:#fff;font-size:1.1rem}
+  .feedback-form label{font-family:'Share Tech Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+  .feedback-input,.feedback-textarea{width:100%;background:#000;border:1px solid var(--border);color:var(--text);padding:.8rem 1rem;font-family:'Rajdhani',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s}
+  .feedback-input:focus,.feedback-textarea:focus{border-color:var(--cyan)}
+  .feedback-textarea{min-height:120px;resize:vertical}
+  .feedback-btn{font-family:'Share Tech Mono',monospace;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:.8rem 1.5rem;border:1px solid var(--cyan);color:var(--cyan);background:transparent;cursor:none;position:relative;overflow:hidden;transition:color .3s;z-index:0;align-self:flex-start}
+  .feedback-btn::before{content:'';position:absolute;inset:0;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:-1}
+  .feedback-btn:hover::before{transform:scaleX(1)} .feedback-btn:hover{color:var(--bg)}
+  .feedback-btn:disabled{opacity:.5;cursor:not-allowed}
+  .feedback-hint{font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--muted);line-height:1.6}
+  .feedback-list{display:flex;flex-direction:column;gap:1rem;max-height:520px;overflow:auto;padding-right:.4rem}
+  .feedback-card{background:var(--bg2);border:1px solid var(--border);padding:1.5rem;position:relative;overflow:hidden}
+  .feedback-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--cyan));opacity:.7}
+  .feedback-name{font-family:'Orbitron',monospace;font-size:.85rem;color:var(--cyan);letter-spacing:1px}
+  .feedback-date{font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
+  .feedback-msg{color:var(--text);line-height:1.7;margin-top:.8rem;font-size:.95rem}
+  .feedback-empty{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:var(--muted);text-align:center;padding:2rem;border:1px dashed var(--border)}
+  @media(max-width:768px){.feedback-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -746,6 +768,7 @@
     <li><a href="#hakkinda">Hakkında</a></li>
     <li><a href="#oyunlar">Oyunlar</a></li>
     <li><a href="#indirmeler">İndirmeler</a></li>
+    <li><a href="#pano">Pano</a></li>
     <li><a href="#sosyal">Sosyal</a></li>
     <li><a href="#iletisim">İletişim</a></li>
   </ul>
@@ -892,6 +915,41 @@
 
 <div class="glow-sep"></div>
 
+<!-- FEEDBACK / MESSAGE BOARD -->
+<section id="pano">
+  <div class="reveal">
+    <p class="section-label">// feedback</p>
+    <h2 class="section-title">Mesaj Panosu</h2>
+    <p style="color:var(--muted);line-height:1.8;max-width:700px;margin:-2rem 0 2rem">Gelen geçen mesaj bırakabilir — beğendiklerimi burada yayınlıyorum. Geri bildirim, öneri veya selam bırak.</p>
+  </div>
+  <div class="feedback-grid reveal">
+    <form id="feedback-form" class="feedback-form" action="https://formsubmit.co/ibrahimcolak8816@gmail.com" method="POST">
+      <h3>Mesaj Bırak</h3>
+      <input type="hidden" name="_subject" value="Yeni pano mesajı — sj.siberjedi.workers.dev">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <div>
+        <label for="fb-name">İsim</label>
+        <input id="fb-name" class="feedback-input" type="text" name="name" placeholder="Adınız" required maxlength="40">
+      </div>
+      <div>
+        <label for="fb-msg">Mesaj</label>
+        <textarea id="fb-msg" class="feedback-textarea" name="message" placeholder="Mesajınız, öneriniz veya geri bildiriminiz..." required maxlength="500"></textarea>
+      </div>
+      <button class="feedback-btn" type="submit">Gönder →</button>
+      <p id="fb-status" class="feedback-hint" style="display:none"></p>
+      <p class="feedback-hint">Gönderilenler önce bana email olarak düşer. Onayladıklarım burada yayınlanır. Spam/küfür otomatik elenir.</p>
+    </form>
+    <div>
+      <h3 style="font-family:'Orbitron',monospace;color:#fff;font-size:1rem;margin-bottom:1rem">Yayınlanan Mesajlar</h3>
+      <div id="feedback-list" class="feedback-list"><div class="feedback-empty">Yükleniyor...</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
 <!-- SOCIAL -->
 <section id="sosyal">
   <div class="reveal">
@@ -968,7 +1026,7 @@
       trail.style.top = e.clientY + 'px';
     }, 80);
   });
-  document.querySelectorAll('a, button, .game-card, .social-card, .stat, .download-card, .download-btn').forEach(el => {
+  document.querySelectorAll('a, button, .game-card, .social-card, .stat, .download-card, .download-btn, .feedback-card, .feedback-btn').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.style.transform = 'translate(-50%, -50%) scale(2)';
       cursor.style.borderColor = 'var(--pink)';
@@ -1042,6 +1100,48 @@
       }
     });
   });
+
+  // Feedback board: load published messages
+  (async () => {
+    const list = document.getElementById('feedback-list');
+    try {
+      const res = await fetch('feedback.json', {cache:'no-store'});
+      const data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) {
+        list.innerHTML = '<div class="feedback-empty">Henüz yayınlanan mesaj yok — ilk sen bırak!</div>';
+        return;
+      }
+      list.innerHTML = data.slice().reverse().map(m => {
+        const safe = s => String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+        return `<div class="feedback-card"><div class="feedback-name">${safe(m.name)}</div><div class="feedback-date">${safe(m.date)}</div><div class="feedback-msg">${safe(m.message)}</div></div>`;
+      }).join('');
+    } catch(e) { list.innerHTML = '<div class="feedback-empty">Mesajlar yüklenemedi.</div>'; }
+  })();
+
+  // Feedback form: AJAX via FormSubmit
+  (() => {
+    const form = document.getElementById('feedback-form');
+    const status = document.getElementById('fb-status');
+    const btn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (form._honey.value) return;
+      const fd = new FormData(form);
+      btn.disabled = true; btn.textContent = 'Gönderiliyor...';
+      status.style.display = 'none';
+      try {
+        const res = await fetch(form.action, {method:'POST', body: fd, headers:{'Accept':'application/json'}});
+        if (res.ok) {
+          status.textContent = '✓ Mesajın alındı! Onaylayınca panoda yayınlanacak.';
+          status.style.color = 'var(--green)'; status.style.display = 'block';
+          form.reset();
+        } else throw new Error();
+      } catch {
+        status.textContent = 'Gönderilemedi — tekrar dene veya ibrahimcolak8816@gmail.com\'a yaz.';
+        status.style.color = 'var(--pink)'; status.style.display = 'block';
+      } finally { btn.disabled = false; btn.textContent = 'Gönder →'; }
+    });
+  })();
 </script>
 </body>
 </html>
