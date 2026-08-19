@@ -326,13 +326,20 @@
     const form=document.getElementById('feedback-form'),status=document.getElementById('fb-status'),btn=form.querySelector('button[type="submit"]');
     form.addEventListener('submit',async(e)=>{
       e.preventDefault(); if(form._honey.value) return;
-      const fd=new FormData(form); btn.disabled=true; btn.textContent='Gönderiliyor...'; status.style.display='none';
+      btn.disabled=true; btn.textContent='Gönderiliyor...'; status.style.display='none';
+      const data={name:document.getElementById('fb-name').value, message:document.getElementById('fb-msg').value, _subject:"Yeni pano mesajı — planla.html", _captcha:"false", _template:"table"};
       try{
-        const res=await fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+        const res=await fetch("https://formsubmit.co/ajax/siberjedi@gmail.com",{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+        const j=await res.json().catch(()=>({}));
         if(res.ok){status.textContent='✓ Mesajın alındı! Onaylayınca panoda yayınlanacak.';status.style.color='var(--green)';status.style.display='block';form.reset();}
-        else throw new Error();
-      }catch{status.textContent='Gönderilemedi — tekrar dene veya siberjedi@gmail.com\'a yaz.';status.style.color='var(--pink)';status.style.display='block';}
-      finally{btn.disabled=false;btn.textContent='Gönder →';}
+        else throw new Error(j.message||'fail');
+      }catch(err){
+        // fallback: normal POST (ilk onay için gerekli)
+        status.innerHTML='FormSubmit onayı bekleniyor — <a href="https://formsubmit.co/siberjedi@gmail.com" target="_blank" style="color:var(--cyan)">buradan test et</a> veya siberjedi@gmail.com spam kutusuna bak. Sonra tekrar dene.';
+        status.style.color='var(--yellow)';status.style.display='block';
+        // yine de normal submit dene
+        try{ await fetch(form.action,{method:'POST',body:new FormData(form)});}catch{}
+      } finally{btn.disabled=false;btn.textContent='Gönder →';}
     });
   })();
 </script>
