@@ -637,10 +637,14 @@
   }
   footer span { color: var(--pink); }
 
+  .nav-toggle{display:none;background:transparent;border:1px solid var(--border);color:var(--cyan);font-size:1.4rem;padding:.3rem .6rem;cursor:none}
   /* Responsive */
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    nav { padding: 1rem 1.5rem; flex-wrap:wrap; }
+    .nav-toggle{display:block}
+    .nav-links { display: none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:rgba(2,4,8,0.96); border-top:1px solid var(--border); padding:1rem 1.5rem; gap:1rem; }
+    .nav-links.open { display: flex; }
+    .nav-links .nav-planla{justify-content:center}
     section { padding: 4rem 1.5rem; }
     .about-grid { grid-template-columns: 1fr; }
     .hero-glitch { letter-spacing: 2px; }
@@ -773,7 +777,7 @@
 
 <nav>
   <div class="nav-logo">SIBER<span>JEDI</span></div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#hakkinda">Hakkında</a></li>
     <li><a href="#oyunlar">Oyunlar</a></li>
     <li><a href="#indirmeler">İndirmeler</a></li>
@@ -781,6 +785,7 @@
     <li><a href="#sosyal">Sosyal</a></li>
     <li><a href="#iletisim">İletişim</a></li>
   </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menü">☰</button>
 </nav>
 
 <div id="hero">
@@ -1074,6 +1079,15 @@
       }
     });
   });
+
+  // Mobile nav toggle
+  (() => {
+    const btn = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (!btn || !links) return;
+    btn.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  })();
 </script>
 </body>
 </html>
