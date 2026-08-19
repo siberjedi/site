@@ -176,6 +176,37 @@
     color: var(--cyan);
     text-shadow: 0 0 10px var(--cyan);
   }
+  .nav-planla {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .35rem .8rem;
+    border: 1px solid var(--green);
+    background: rgba(0,255,136,0.08);
+    color: var(--green) !important;
+    box-shadow: 0 0 12px rgba(0,255,136,0.25), 0 0 30px rgba(0,255,136,0.08);
+    animation: planlaPulse 2.2s ease-in-out infinite;
+    border-radius: 2px;
+  }
+  .nav-planla:hover {
+    background: var(--green);
+    color: var(--bg) !important;
+    text-shadow: none !important;
+    box-shadow: 0 0 20px var(--green);
+  }
+  .nav-badge {
+    font-size: .55rem;
+    letter-spacing: 2px;
+    background: var(--green);
+    color: var(--bg);
+    padding: .15rem .35rem;
+    border-radius: 2px;
+    font-weight: 700;
+  }
+  @keyframes planlaPulse {
+    0%,100% { box-shadow: 0 0 12px rgba(0,255,136,0.25), 0 0 30px rgba(0,255,136,0.08); }
+    50% { box-shadow: 0 0 18px rgba(0,255,136,0.45), 0 0 40px rgba(0,255,136,0.15); }
+  }
 
   /* HERO */
   #hero {
@@ -746,6 +777,7 @@
     <li><a href="#hakkinda">Hakkında</a></li>
     <li><a href="#oyunlar">Oyunlar</a></li>
     <li><a href="#indirmeler">İndirmeler</a></li>
+    <li><a href="planla.html" class="nav-planla">Planla! <span class="nav-badge">YENİ</span></a></li>
     <li><a href="#sosyal">Sosyal</a></li>
     <li><a href="#iletisim">İletişim</a></li>
   </ul>
