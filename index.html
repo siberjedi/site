@@ -589,6 +589,104 @@
     opacity: 0.3;
   }
   .hero-logo { width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--cyan); box-shadow: 0 0 30px var(--cyan), 0 0 60px rgba(0,245,255,0.2); margin-bottom: 1.5rem; animation: fadeUp 1s 0.2s both; }
+
+  /* DOWNLOADS */
+  .downloads-grid {
+    display: grid;
+    gap: 2rem;
+    max-width: 700px;
+  }
+  .download-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .download-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .download-card:hover::before { transform: scaleX(1); }
+  .download-card:hover { background: var(--dim); }
+  .download-icon { font-size: 2.8rem; filter: drop-shadow(0 0 8px var(--green)); }
+  .download-tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--green);
+    color: var(--green);
+    text-transform: uppercase;
+    align-self: flex-start;
+  }
+  .download-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .download-desc { color: var(--muted); line-height: 1.8; font-size: 0.98rem; }
+  .download-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .download-features li {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .download-features li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+  }
+  .download-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .download-btn {
+    align-self: flex-start;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--green);
+    color: var(--green);
+    text-decoration: none;
+    cursor: none;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s;
+    z-index: 0;
+    margin-top: 0.5rem;
+  }
+  .download-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+    z-index: -1;
+  }
+  .download-btn:hover::before { transform: scaleX(1); }
+  .download-btn:hover { color: var(--bg); }
 </style>
 </head>
 <body>
@@ -601,6 +699,7 @@
   <ul class="nav-links">
     <li><a href="#hakkinda">Hakkında</a></li>
     <li><a href="#oyunlar">Oyunlar</a></li>
+    <li><a href="#indirmeler">İndirmeler</a></li>
     <li><a href="#sosyal">Sosyal</a></li>
     <li><a href="#iletisim">İletişim</a></li>
   </ul>
@@ -721,6 +820,31 @@
 
 <div class="glow-sep"></div>
 
+<!-- DOWNLOADS -->
+<section id="indirmeler">
+  <div class="reveal">
+    <p class="section-label">// downloads</p>
+    <h2 class="section-title">İndirmeler</h2>
+  </div>
+  <div class="downloads-grid reveal">
+    <div class="download-card">
+      <span class="download-icon">📅</span>
+      <div class="download-tag">Ücretsiz · Kurulum Gerektirmez</div>
+      <h3 class="download-title">Planla! — Ders Programı Üretici</h3>
+      <p class="download-desc">Okul ders programlarını otomatik hazırlayan ücretsiz bir uygulama. Kurulum gerektirmez — <code style="color:var(--cyan)">baslat.html</code>'e çift tıklayın, tarayıcınızda açılır. Verileriniz tarayıcınızda saklanır, JSON ile yedekleyip taşıyabilirsiniz.</p>
+      <ul class="download-features">
+        <li>Otomatik dağıtım — 9 tura kadar en iyi yerleşimi arar</li>
+        <li>Öğretmen / Sınıf / Derslik / Çoklu okul desteği</li>
+        <li>PDF ve Excel çıktısı · Karanlık mod · Örnek veri ile deneme</li>
+      </ul>
+      <span class="download-meta">Planla.zip · ~600 KB · Windows / Mac / Linux · İnternet gerekmez</span>
+      <a href="downloads/Planla.zip" download class="download-btn">İndir ↓</a>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
 <!-- SOCIAL -->
 <section id="sosyal">
   <div class="reveal">
@@ -797,7 +921,7 @@
       trail.style.top = e.clientY + 'px';
     }, 80);
   });
-  document.querySelectorAll('a, button, .game-card, .social-card, .stat').forEach(el => {
+  document.querySelectorAll('a, button, .game-card, .social-card, .stat, .download-card, .download-btn').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.style.transform = 'translate(-50%, -50%) scale(2)';
       cursor.style.borderColor = 'var(--pink)';
