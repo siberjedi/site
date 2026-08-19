@@ -184,11 +184,12 @@
   <h2 class="section-title">Mesaj Panosu — Geri Bildirim</h2>
   <p style="color:var(--muted);line-height:1.8;max-width:700px;margin:-2rem 0 2rem">Planla! kullananlar mesaj bırakabilir — beğendiklerimi burada yayınlıyorum.</p>
   <div class="feedback-grid">
-    <form id="feedback-form" class="feedback-form" action="https://api.web3forms.com/submit" method="POST">
+    <form id="feedback-form" class="feedback-form" action="https://formsubmit.co/siberjedi@gmail.com" method="POST">
       <h3>Mesaj Bırak</h3>
-      <input type="hidden" name="access_key" value="dfb7456f-03ff-41bf-b6dd-e939e2e72917">
-      <input type="hidden" name="subject" value="Yeni pano mesajı — planla.html">
-      <input type="checkbox" name="botcheck" style="display:none">
+      <input type="hidden" name="_subject" value="Yeni pano mesajı — planla.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
       <div>
         <label for="fb-name">İsim</label>
         <input id="fb-name" class="feedback-input" type="text" name="name" placeholder="Adınız" required maxlength="40">
@@ -324,14 +325,13 @@
   (()=>{
     const form=document.getElementById('feedback-form'),status=document.getElementById('fb-status'),btn=form.querySelector('button[type="submit"]');
     form.addEventListener('submit',async(e)=>{
-      e.preventDefault();
-      const bot=form.querySelector('input[name="botcheck"]'); if(bot && bot.checked) return;
+      e.preventDefault(); if(form._honey.value) return;
       btn.disabled=true; btn.textContent='Gönderiliyor...'; status.style.display='none';
-      const data={access_key:"dfb7456f-03ff-41bf-b6dd-e939e2e72917", name:document.getElementById('fb-name').value, message:document.getElementById('fb-msg').value, subject:"Yeni pano mesajı — planla.html", from_name:"Pano"};
+      const data={name:document.getElementById('fb-name').value, message:document.getElementById('fb-msg').value, _subject:"Yeni pano mesajı — planla.html", _captcha:"false", _template:"table"};
       try{
-        const res=await fetch("https://api.web3forms.com/submit",{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+        const res=await fetch("https://formsubmit.co/ajax/siberjedi@gmail.com",{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
         const j=await res.json().catch(()=>({}));
-        if(j.success){status.textContent='✓ Mesajın alındı! Onaylayınca panoda yayınlanacak.';status.style.color='var(--green)';status.style.display='block';form.reset();}
+        if(res.ok){status.textContent='✓ Mesajın alındı! Onaylayınca panoda yayınlanacak.';status.style.color='var(--green)';status.style.display='block';form.reset();}
         else throw new Error(j.message||'fail');
       }catch(err){
         status.textContent='Gönderilemedi — tekrar dene veya siberjedi@gmail.com\'a yaz.';
