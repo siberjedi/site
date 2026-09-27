@@ -549,6 +549,68 @@
   .game-card:nth-child(4) .game-btn:hover { color: var(--bg); }
   .game-card:nth-child(4) .game-icon { filter: drop-shadow(0 0 8px var(--green)); }
 
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--border);
+  }
+  .project-card {
+    background: var(--bg2);
+    padding: 2.2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-decoration: none;
+    cursor: none;
+    transition: background 0.3s;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--cyan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .project-card:nth-child(2)::before { background: var(--pink); }
+  .project-card:nth-child(3)::before { background: var(--yellow); }
+  .project-card:nth-child(4)::before { background: var(--green); }
+  .project-card:nth-child(5)::before { background: var(--pink); }
+  .project-card:nth-child(6)::before { background: var(--yellow); }
+  .project-card:hover { background: var(--dim); }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-head { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .project-icon { font-size: 1.8rem; }
+  .project-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .project-lang {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+  .project-desc { color: var(--muted); line-height: 1.7; font-size: 0.92rem; flex: 1; }
+  .project-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    transition: color 0.3s;
+  }
+  .project-card:hover .project-link { color: var(--pink); }
+
   /* SOCIAL */
   .social-grid {
     display: grid;
@@ -655,6 +717,7 @@
     section { padding: 4rem 1.5rem; }
     .about-grid { grid-template-columns: 1fr; }
     .games-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
     .hero-glitch { letter-spacing: 2px; }
   }
 
@@ -789,6 +852,7 @@
     <li><a href="#hakkinda">Hakkında</a></li>
     <li><a href="#oyunlar">Oyunlar</a></li>
     <li><a href="#indirmeler">İndirmeler</a></li>
+    <li><a href="#projeler">Projeler</a></li>
     <li><a href="planla.html" class="nav-planla">Planla! <span class="nav-badge">YENİ</span></a></li>
     <li><a href="#sosyal">Sosyal</a></li>
     <li><a href="#iletisim">İletişim</a></li>
@@ -945,6 +1009,48 @@
 
 <div class="glow-sep"></div>
 
+<!-- PROJECTS -->
+<section id="projeler">
+  <div class="reveal">
+    <p class="section-label">// github</p>
+    <h2 class="section-title">Projeler</h2>
+  </div>
+  <div class="projects-grid reveal">
+    <a href="https://github.com/siberjedi/neon-image-studio" target="_blank" class="project-card">
+      <div class="project-head"><span class="project-icon">🖼️</span><span class="project-title">neon-image-studio</span><span class="project-lang">Python</span></div>
+      <p class="project-desc">Oyun varlıkları için yerel AI görsel üretim stüdyosu. Gradio arayüzü + ComfyUI arka ucu ile çalışır.</p>
+      <span class="project-link">github.com/siberjedi/neon-image-studio ↗</span>
+    </a>
+    <a href="https://github.com/siberjedi/neon-3d-mesh-studio" target="_blank" class="project-card">
+      <div class="project-head"><span class="project-icon">🧊</span><span class="project-title">neon-3d-mesh-studio</span><span class="project-lang">Python</span></div>
+      <p class="project-desc">Tek görselden 3D model üretme stüdyosu. Hunyuan3D-Shape tabanlı; API ve toplu işleme desteği var.</p>
+      <span class="project-link">github.com/siberjedi/neon-3d-mesh-studio ↗</span>
+    </a>
+    <a href="https://github.com/siberjedi/neon-texture-studio" target="_blank" class="project-card">
+      <div class="project-head"><span class="project-icon">🎨</span><span class="project-title">neon-texture-studio</span><span class="project-lang">Python</span></div>
+      <p class="project-desc">Görsel + mesh'ten PBR doku üretim hattı. Hunyuan3D-Paint, Gradio arayüzü, FastAPI ve batch modu.</p>
+      <span class="project-link">github.com/siberjedi/neon-texture-studio ↗</span>
+    </a>
+    <a href="https://github.com/siberjedi/unity-mcp" target="_blank" class="project-card">
+      <div class="project-head"><span class="project-icon">🎮</span><span class="project-title">unity-mcp</span><span class="project-lang">Python</span></div>
+      <p class="project-desc">AI asistanları ile Unity Editor arasında köprü. Sahne yönetimi, asset kontrolü ve script düzenlemeyi otomatikleştirir.</p>
+      <span class="project-link">github.com/siberjedi/unity-mcp ↗</span>
+    </a>
+    <a href="https://github.com/siberjedi/whisper-webui" target="_blank" class="project-card">
+      <div class="project-head"><span class="project-icon">🎙️</span><span class="project-title">whisper-webui</span><span class="project-lang">Python</span></div>
+      <p class="project-desc">Yerel konuşmadan-metne web arayüzü. faster-whisper tabanlı, tek tıkla çalışan Windows başlatıcısı ile.</p>
+      <span class="project-link">github.com/siberjedi/whisper-webui ↗</span>
+    </a>
+    <a href="https://github.com/siberjedi/zen-genie-code" target="_blank" class="project-card">
+      <div class="project-head"><span class="project-icon">📈</span><span class="project-title">zen-genie-code</span><span class="project-lang">Python</span></div>
+      <p class="project-desc">AI trading araştırma çekirdeği: backtesting, metrikler, risk katmanları ve RL deneyleri (yalnızca araştırma).</p>
+      <span class="project-link">github.com/siberjedi/zen-genie-code ↗</span>
+    </a>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
 <!-- SOCIAL -->
 <section id="sosyal">
   <div class="reveal">
@@ -1021,7 +1127,7 @@
       trail.style.top = e.clientY + 'px';
     }, 80);
   });
-  document.querySelectorAll('a, button, .game-card, .social-card, .stat, .download-card, .download-btn').forEach(el => {
+  document.querySelectorAll('a, button, .game-card, .social-card, .stat, .download-card, .download-btn, .project-card').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.style.transform = 'translate(-50%, -50%) scale(2)';
       cursor.style.borderColor = 'var(--pink)';
